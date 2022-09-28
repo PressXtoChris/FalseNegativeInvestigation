@@ -1,18 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace FalseNegativeInvestigation.Infrastructure;
-
-internal class Repository : IRepository
+namespace FalseNegativeInvestigation.Infrastructure
 {
-    protected readonly DbContext DbContext;
-
-    public Repository(DbContext dbContext)
+    internal class Repository : IRepository
     {
-        DbContext = dbContext;
-    }
+        protected readonly DbContext DbContext;
 
-    public void InjectSql(string injection)
-    {
-        DbContext.Database.ExecuteSqlRaw($"SELECT * FROM public.\"table\" WHERE column_name = '{injection}'");
+        public Repository(DbContext dbContext)
+        {
+            DbContext = dbContext;
+        }
+
+        public void InjectSql(string injection)
+        {
+            DbContext.Database.ExecuteSqlRaw($"SELECT * FROM public.\"table\" WHERE column_name = '{injection}'");
+        }
     }
 }

@@ -2,13 +2,14 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FalseNegativeInvestigation.Infrastructure;
-
-public static class Bindings
+namespace FalseNegativeInvestigation.Infrastructure
 {
-    public static void AddInfrastructureBindings(this IServiceCollection serviceCollection, IConfiguration configuration)
+    public static class Bindings
     {
-        serviceCollection.AddDbContext<DbContext>(options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-        serviceCollection.AddScoped<IRepository, Repository>();
+        public static void AddInfrastructureBindings(this IServiceCollection serviceCollection, IConfiguration configuration)
+        {
+            serviceCollection.AddDbContext<DbContext>(options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            serviceCollection.AddScoped<IRepository, Repository>();
+        }
     }
 }

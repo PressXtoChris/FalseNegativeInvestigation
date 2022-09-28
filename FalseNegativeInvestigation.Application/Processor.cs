@@ -1,18 +1,19 @@
 ﻿using FalseNegativeInvestigation.Infrastructure;
 
-namespace FalseNegativeInvestigation.Application;
-
-public class Processor
+namespace FalseNegativeInvestigation.Application
 {
-    private readonly IRepository _repository;
-
-    public Processor(IRepository repository)
+    public class Processor
     {
-        _repository = repository;
-    }
+        private readonly IRepository _repository;
 
-    public void Process(string injection)
-    {
-        _repository.InjectSql(injection);
+        public Processor(IRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public void Process(string injection)
+        {
+            _repository.InjectSql(injection);
+        }
     }
 }

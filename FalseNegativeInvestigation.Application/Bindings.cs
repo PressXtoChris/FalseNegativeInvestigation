@@ -1,13 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace FalseNegativeInvestigation.Application;
-
-public static class Bindings
+namespace FalseNegativeInvestigation.Application
 {
-    public static IServiceCollection AddApplicationBindings(this IServiceCollection serviceCollection)
+    public static class Bindings
     {
-        serviceCollection.AddTransient<Processor>();
+        public static IServiceCollection AddApplicationBindings(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<Processor>();
 
-        return serviceCollection;
+            return serviceCollection;
+        }
     }
 }

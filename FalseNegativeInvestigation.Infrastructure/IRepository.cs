@@ -1,6 +1,7 @@
-﻿namespace FalseNegativeInvestigation.Infrastructure;
-
-public interface IRepository
+﻿namespace FalseNegativeInvestigation.Infrastructure
 {
-    void InjectSql(string injection);
+    public interface IRepository
+    {
+        void InjectSql(string injection);
+    }
 }
