@@ -1,6 +1,6 @@
 # Veracode False Negative Investigation
 
-This is an application with a SQL injection flaw that is not being picked up by Veracode. This version of the application is built using .NET Core 3.1, but there is also a [.NET 6 version](./tree/main) with the same problem.
+This is an application with a SQL injection flaw that is not being picked up by Veracode. This version of the application is built using .NET Core 3.1, but there is also a [.NET 6 version](https://github.com/PressXtoChris/FalseNegativeInvestigation/) with the same problem.
 
 The application starts in [the .Web project's Program.cs](./FalseNegativeInvestigation.Web/Program.cs). It calls `Console.ReadLine()` to read in an untrusted string, and then sends it to [the .Application project's Processor.cs](./FalseNegativeInvestigation.Application/Processor.cs), which then sends the string to [the .Infrastructure project's Repository.cs](./FalseNegativeInvestigation.Infrastructure/Repository.cs). The repository uses EntityFramework to execute a raw `SELECT` statement on a PostgreSQL database, using string interpolation to pass through the untrusted string. This allows the user to inject whatever SQL they would like.
 
